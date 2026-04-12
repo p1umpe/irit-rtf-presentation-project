@@ -1,0 +1,349 @@
+.processing-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+}
+
+.processing-card {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px var(--shadow);
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+/* Анимация вращения шестеренки */
+.gear-container {
+  margin-bottom: 1.5rem;
+  animation: spin 3s linear infinite;
+}
+
+.gear-icon {
+  color: var(--accent);
+  transition: color 0.3s ease;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Заголовок */
+.processing-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+/* Контейнер этапа */
+.stage-container {
+  background: var(--bg-secondary);
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.stage-label {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.stage-value {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 1rem;
+  animation: fadeInOut 0.5s ease;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Счетчик слайдов */
+.slide-counter {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Секция прогресса */
+.progress-section {
+  margin: 1.5rem 0;
+}
+
+.progress-percentage {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Кнопка отмены */
+.cancel-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.cancel-button:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Адаптивность */
+@media (max-width: 640px) {
+  .processing-card {
+    padding: 1.5rem;
+  }
+  
+  .processing-title {
+    font-size: 1.25rem;
+  }
+  
+  .stage-container {
+    flex-direction: column;
+  }
+}
+
+/* Результат обработки */
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+}
+
+.result-card {
+  background: var(--card-bg);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px var(--shadow);
+  border: 1px solid var(--border);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.result-card h2 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.result-description {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.result-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0.5rem;
+  min-width: 180px;
+}
+
+.result-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+.result-button.download-button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  font-weight: 600;
+}
+
+.result-button.secondary {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.result-button.secondary:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Стили для отмены */
+.processing-card.cancelled {
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.cancel-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cancel-countdown {
+  color: var(--text-secondary);
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.countdown-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--accent);
+  margin: 0 0.25rem;
+}
+
+.cancel-spinner {
+  width: 40px;
+  height: 40px;
+  margin: 1rem auto 0;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Диалог подтверждения */
+.confirm-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+.confirm-dialog {
+  background: var(--card-bg);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 320px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 40px var(--shadow);
+  border: 1px solid var(--border);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.confirm-dialog-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.confirm-dialog h3 {
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.confirm-dialog p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.confirm-dialog-buttons {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.confirm-dialog-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.confirm-dialog-btn.cancel {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.confirm-dialog-btn.cancel:hover {
+  background: var(--bg-primary);
+}
+
+.confirm-dialog-btn.confirm {
+  background: #ef4444;
+  color: white;
+}
+
+.confirm-dialog-btn.confirm:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}

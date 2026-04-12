@@ -17,3 +17,82 @@
 .theme-toggle span {
   margin-left: 0.5rem;
 }
+
+/* Общие стили для кнопок и компонентов */
+
+/* Кнопка начала обработки */
+.processing-start-button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.processing-start-button:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+/* Контейнер главной страницы */
+.main-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+/* Результат обработки */
+.result-container {
+  text-align: center;
+  padding: 2rem;
+}
+
+.result-container h2 {
+  margin-bottom: 1rem;
+}
+
+.result-container button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.result-container button:hover {
+  background: var(--accent-hover);
+}
+
+/* App компонент - основные стили */
+
+/* Корневой контейнер приложения */
+.app-container {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Шапка приложения */
+.app-header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Основной контент */
+.app-main {
+  /* Стили для основного контента */
+}
