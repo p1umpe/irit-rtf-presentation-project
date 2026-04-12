@@ -1,0 +1,25 @@
+/* Светлая тема (по умолчанию) */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --border: #e5e7eb;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Темная тема */
+[data-theme="dark"] {
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #9ca3af;
+  --border: #374151;
+  --accent: #60a5fa;
+  --accent-hover: #3b82f6;
+  --card-bg: #1f2937;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
