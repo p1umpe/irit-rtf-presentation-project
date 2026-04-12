@@ -2,6 +2,7 @@
 @import './components.css';
 @import './progress-bar.css';
 @import './processing-screen.css';
+@import './landing.css';
 
 * {
   transition: background-color 0.3s ease, 
