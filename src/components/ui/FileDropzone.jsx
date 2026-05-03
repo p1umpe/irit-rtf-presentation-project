@@ -3,6 +3,7 @@ import uploadGraphic from '../../images/share.png';
 
 export const FileDropzone = ({
   onFileSelect,
+  onFileError,
   accept = '.pptx',
   maxSize = 50 * 1024 * 1024,
 }) => {
@@ -14,12 +15,16 @@ export const FileDropzone = ({
 
   const validateFile = (file) => {
     if (!file.name.toLowerCase().endsWith('.pptx')) {
-      setError('Пожалуйста, загрузите файл в формате .pptx');
+      const errorMessage = 'Пожалуйста, загрузите файл в формате .pptx';
+      setError(errorMessage);
+      onFileError?.(errorMessage);
       return false;
     }
 
     if (file.size > maxSize) {
-      setError('Файл слишком большой. Максимальный размер 50MB');
+      const errorMessage = 'Файл слишком большой. Максимальный размер 50MB';
+      setError(errorMessage);
+      onFileError?.(errorMessage);
       return false;
     }
 

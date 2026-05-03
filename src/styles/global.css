@@ -1,7 +1,5 @@
 @import './theme.css';
 @import './components.css';
-@import './progress-bar.css';
-@import './processing-screen.css';
 @import './landing.css';
 
 * {

@@ -1,30 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { LandingPage } from './pages/LandingPage';
-import { ProcessingPage } from './pages/ProcessingPage';
 import urfuLogo from './images/urfu-logo.png';
 import './styles/global.css';
     
 function App() {
-  const [currentPage, setCurrentPage] = useState('landing');
-  const [selectedFile, setSelectedFile] = useState(null);
-
-  const handleStartProcessing = (file) => {
-    setSelectedFile(file);
-    setCurrentPage('processing');
-  };
-
-  const handleBackToLanding = () => {
-    setCurrentPage('landing');
-    setSelectedFile(null);
-  };
-
-  const handleHistoryClick = () => {
-    console.log('История загрузок');
-  };
-
   const handleLogoClick = () => {
-    setCurrentPage('landing');
-    setSelectedFile(null);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -41,15 +22,7 @@ function App() {
         </button>
       </header>
       <main className="app-main">
-        {currentPage === 'landing' && (
-          <LandingPage
-            onStartProcessing={handleStartProcessing}
-            onHistoryClick={handleHistoryClick}
-          />
-        )}
-        {currentPage === 'processing' && (
-          <ProcessingPage onBack={handleBackToLanding} />
-        )}
+        <LandingPage />
       </main>
       <footer className="app-footer">
         <p>ИРИТ-РТФ • Кодовое Убежище • 2026</p>

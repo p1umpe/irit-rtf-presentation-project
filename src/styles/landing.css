@@ -115,7 +115,7 @@
 }
 
 .landing-upload-card {
-  width: min(560px, 100%);
+  width: min(920px, 100%);
   background: #ffffff;
   border-radius: 12px;
   padding: clamp(1.5rem, 4vw, 2rem);
@@ -125,6 +125,7 @@
 
 .landing-upload-heading {
   margin: 0 0 1.25rem;
+  min-height: 1.5rem;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
@@ -229,6 +230,135 @@
   cursor: not-allowed;
 }
 
+.landing-upload-note {
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #8a7a5b;
+}
+
+.upload-processing {
+  width: 100%;
+}
+
+.upload-success-title {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.upload-processing-status {
+  border: 1px dashed #ebebeb;
+  border-radius: 4px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem;
+}
+
+.upload-processing-icon {
+  width: 40px;
+  height: auto;
+  object-fit: contain;
+}
+
+.upload-processing-text {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666666;
+  text-align: center;
+}
+
+.upload-error-hint {
+  margin: 1rem 0 1.2rem;
+  border-bottom: 1px solid #efefef;
+  padding-bottom: 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+  color: #b0b0b0;
+}
+
+.upload-processing-bar {
+  width: 100%;
+  height: 8px;
+  background: #d0d0d0;
+  margin: 1.4rem 0 1.2rem;
+}
+
+.upload-processing-bar-fill {
+  height: 100%;
+  background: #b8974d;
+  transition: width 0.3s ease;
+}
+
+.upload-processing-bar-fill.is-cancelled {
+  background: #8e0d0d;
+}
+
+.upload-processing-cancel {
+  display: block;
+  margin: 0 auto;
+  min-width: 230px;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #b8974d;
+}
+
+.upload-processing-cancel:hover {
+  background: #a9853f;
+}
+
+.upload-processing-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 0 auto;
+  width: fit-content;
+  min-width: 170px;
+  padding: 0.7rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #b8974d;
+}
+
+.upload-processing-download:hover {
+  background: #a9853f;
+}
+
+.upload-processing-back {
+  display: block;
+  margin: 0 auto;
+  min-width: 110px;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #b8974d;
+}
+
+.upload-processing-back:hover {
+  background: #a9853f;
+}
+
+.upload-download-icon {
+  width: 14px;
+  height: auto;
+  object-fit: contain;
+}
+
 .landing-btn-history {
   padding: 0.7rem 1.75rem;
   font-size: 0.8125rem;
@@ -239,6 +369,105 @@
 
 .landing-btn-history:hover {
   background: var(--landing-gold-hover);
+}
+
+.history-panel {
+  width: min(920px, 100%);
+  background: #ffffff;
+  border: 1px solid rgba(184, 151, 77, 0.12);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+}
+
+.history-title {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.history-empty {
+  margin: 1.2rem 0;
+  text-align: center;
+  color: #777777;
+  font-size: 0.95rem;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.9rem 1.2rem;
+}
+
+.history-item {
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.history-item-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  background: #c45700;
+  color: #ffffff;
+  font-size: 2.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-item-content {
+  min-width: 0;
+}
+
+.history-item-name {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  word-break: break-word;
+}
+
+.history-item-date {
+  margin: 0.2rem 0 0.45rem;
+  font-size: 0.9rem;
+  color: #1a1a1a;
+}
+
+.history-item-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.history-item-btn {
+  padding: 0.25rem 0.55rem;
+  font-size: 0.76rem;
+  color: #ffffff;
+  background: #b8974d;
+  border-radius: 4px;
+}
+
+.history-item-btn:hover {
+  background: #a9853f;
+}
+
+.history-hide-btn {
+  display: block;
+  margin: 1.2rem auto 0;
+  min-width: 110px;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: #b8974d;
+}
+
+.history-hide-btn:hover {
+  background: #a9853f;
 }
 
 .dropzone-error {
