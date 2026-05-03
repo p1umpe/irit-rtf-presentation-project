@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { FileDropzone } from '../components/ui/FileDropzone';
+import heroBg from '../images/urfu-building.png';
+import exampleCompare from '../images/pres-examle.png';
 import '../styles/landing.css';
 
 export const LandingPage = ({ onStartProcessing, onHistoryClick }) => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const uploadRef = useRef(null);
 
   const handleStartProcessing = () => {
     if (selectedFile) {
@@ -11,89 +14,80 @@ export const LandingPage = ({ onStartProcessing, onHistoryClick }) => {
     }
   };
 
+  const scrollToUpload = () => {
+    uploadRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="landing-page">
-      <main className="landing-main">
-        {/* Главный блок */}
-        <div className="landing-card">
-          <h2 className="card-title">
-            Приведите презентацию<br />
-            к единому стилю за минуту!
-          </h2>
-          
-          <p className="card-subtitle">
-            Поддерживаются файлы .pptx до 50 МБ
-          </p>
-
-          {/* Примеры работы */}
-          <div className="examples-section">
-            <h3 className="examples-title">Примеры работы сервиса</h3>
-            
-            <div className="examples-row">
-              {/* Пример 1 */}
-              <div className="example-block">
-                <div className="example-item">
-                  <div className="example-label before-label">До</div>
-                  <div className="example-content before">
-                    Слайд с текстом
-                  </div>
-                </div>
-                <div className="example-arrow-down">↓</div>
-                <div className="example-item">
-                  <div className="example-label after-label">После</div>
-                  <div className="example-content after">
-                    Слайд с текстом (стилизованный)
-                  </div>
-                </div>
-              </div>
-
-              {/* Пример 2 */}
-              <div className="example-block">
-                <div className="example-item">
-                  <div className="example-label before-label">До</div>
-                  <div className="example-content before">
-                    Слайд с текстом и картинкой
-                  </div>
-                </div>
-                <div className="example-arrow-down">↓</div>
-                <div className="example-item">
-                  <div className="example-label after-label">После</div>
-                  <div className="example-content after">
-                    Слайд с текстом и картинкой (стилизованный)
-                  </div>
-                </div>
-              </div>
-            </div>
+      <section
+        className="landing-hero"
+        style={{ backgroundImage: `url(${heroBg})` }}
+        aria-label="Главный баннер"
+      >
+        <div className="landing-hero-inner">
+          <div className="landing-hero-card">
+            <h1 className="landing-hero-heading">
+              Автоматическое приведение презентаций к фирменному шаблону ИРИТ-РТФ
+            </h1>
+            <p className="landing-hero-tagline">
+              Вместо сотен правок – одно нажатие
+            </p>
+            <button
+              type="button"
+              className="landing-btn landing-btn-cta"
+              onClick={scrollToUpload}
+            >
+              ПОПРОБОВАТЬ СЕЙЧАС
+            </button>
           </div>
+        </div>
+      </section>
 
-          {/* Drag & Drop зона */}
-          <div className="dropzone-section">
-            <FileDropzone 
+      <section className="landing-examples" aria-labelledby="landing-examples-heading">
+        <p id="landing-examples-heading" className="landing-examples-caption">
+          Примеры работ нашего сервиса
+        </p>
+        <img
+          src={exampleCompare}
+          alt="Сравнение слайда до и после стилизации"
+          className="landing-examples-image"
+          loading="lazy"
+        />
+      </section>
+
+      <section
+        ref={uploadRef}
+        id="landing-upload"
+        className="landing-upload-wrap"
+      >
+        <div className="landing-upload-card">
+          <h2 className="landing-upload-heading">Добавьте файл</h2>
+          <div className="landing-dropzone-block">
+            <FileDropzone
               onFileSelect={setSelectedFile}
               accept=".pptx"
               maxSize={50 * 1024 * 1024}
             />
           </div>
-
-          {/* Кнопки */}
-          <div className="action-buttons">
-            <button 
-              className="process-button"
-              onClick={handleStartProcessing}
-              disabled={!selectedFile}
-            >
-              Начать стилизацию →
-            </button>
-            
-            <button 
-              className="history-button"
-              onClick={onHistoryClick}
-            >
-              📋 История загрузок
-            </button>
-          </div>
+          <button
+            type="button"
+            className="landing-btn landing-btn-continue"
+            onClick={handleStartProcessing}
+            disabled={!selectedFile}
+          >
+            Продолжить
+          </button>
         </div>
-      </main>
+
+        <button
+          type="button"
+          className="landing-btn landing-btn-history"
+          onClick={onHistoryClick}
+        >
+          История работ
+        </button>
+      </section>
     </div>
   );
 };

@@ -1,187 +1,199 @@
-/* Лендинг страница */
+/* Лендинг: кремовый фон и золотой акцент */
 .landing-page {
+  --landing-cream: #fdfbf4;
+  --landing-gold: #b8974d;
+  --landing-gold-hover: #a0803d;
+  --landing-hero-card-bg: rgba(248, 244, 236, 0.96);
+  --landing-muted: #5c5448;
+
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: var(--landing-cream);
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
-.landing-main {
-  flex: 1;
+/* Hero: фото корпуса */
+.landing-hero {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: clamp(260px, 42vw, 440px);
+  display: flex;
+  align-items: stretch;
+}
+
+.landing-hero-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.landing-hero-card {
+  max-width: 22rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border-radius: 12px;
+  background: var(--landing-hero-card-bg);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+}
+
+.landing-hero-heading {
+  margin: 0 0 0.75rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--landing-gold);
+}
+
+.landing-hero-tagline {
+  margin: 0 0 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--landing-muted);
+}
+
+.landing-btn {
+  font-family: 'Poppins', system-ui, sans-serif;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.2s ease, opacity 0.2s ease, transform 0.15s ease;
+}
+
+.landing-btn-cta {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--landing-gold);
+  color: #ffffff;
+}
+
+.landing-btn-cta:hover {
+  background: var(--landing-gold-hover);
+}
+
+.landing-btn-cta:active {
+  transform: translateY(1px);
+}
+
+/* Примеры: картинка по центру */
+.landing-examples {
+  padding: clamp(2rem, 5vw, 3rem) 1.25rem;
+  text-align: center;
+}
+
+.landing-examples-caption {
+  margin: 0 auto 1.25rem;
+  max-width: 40rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--landing-muted);
+}
+
+.landing-examples-image {
+  display: block;
+  width: min(920px, 100%);
+  height: auto;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Блок загрузки */
+.landing-upload-wrap {
+  padding: 0 1.25rem clamp(2.5rem, 6vw, 4rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
+  gap: 1.5rem;
 }
 
-/* Главная карточка */
-.landing-card {
-  background: var(--card-bg);
-  border-radius: 1.5rem;
-  padding: 2rem;
-  max-width: 900px;
-  width: 100%;
-  box-shadow: 0 8px 32px var(--shadow);
-  border: 1px solid var(--border);
+.landing-upload-card {
+  width: min(560px, 100%);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: clamp(1.5rem, 4vw, 2rem);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(184, 151, 77, 0.12);
 }
 
-.card-title {
-  text-align: center;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  line-height: 1.3;
-}
-
-.card-subtitle {
-  text-align: center;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-  font-size: 0.875rem;
-}
-
-/* Примеры работы */
-.examples-section {
-  margin-bottom: 2rem;
-}
-
-.examples-title {
+.landing-upload-heading {
+  margin: 0 0 1.25rem;
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 1.5rem;
+  color: #000000;
 }
 
-.examples-row {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.example-block {
-  flex: 1;
-  min-width: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  background: var(--bg-secondary);
-  border-radius: 1rem;
-}
-
-.example-item {
-  width: 100%;
-  max-width: 280px;
-}
-
-.example-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 0.25rem 0.75rem;
-  display: inline-block;
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-
-.before-label {
-  background: #6b7280;
-  color: white;
-}
-
-.after-label {
-  background: var(--accent);
-  color: white;
-}
-
-.example-content {
-  padding: 1.5rem;
-  text-align: center;
-  font-size: 0.875rem;
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 0.5rem 0.5rem 0.5rem;
-}
-
-.example-content.before {
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
-}
-
-.example-content.after {
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  color: white;
-}
-
-.example-arrow-down {
-  font-size: 1.5rem;
-  color: var(--accent);
-  font-weight: bold;
-  margin: 0.5rem 0;
-}
-
-/* Drag & Drop зона */
-.dropzone-section {
-  margin: 1.5rem 0;
+.landing-dropzone-block {
+  margin-bottom: 1.25rem;
 }
 
 .file-dropzone-container {
   width: 100%;
 }
 
-.file-dropzone {
-  border: 2px dashed var(--border);
-  border-radius: 1rem;
-  padding: 1.5rem;
+.landing-page .file-dropzone {
+  border: 2px dashed #cfd0c8;
+  border-radius: 10px;
+  padding: clamp(2rem, 5vw, 2.75rem) 1.25rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background: var(--bg-primary);
+  transition: border-color 0.2s ease, background 0.2s ease;
+  background: #fafafa;
 }
 
-.file-dropzone:hover {
-  border-color: var(--accent);
-  background: var(--bg-secondary);
+.landing-page .file-dropzone:hover {
+  border-color: var(--landing-gold);
+  background: #fffdf8;
 }
 
-.file-dropzone.drag-active {
-  border-color: var(--accent);
-  background: rgba(59, 130, 246, 0.1);
-  transform: scale(1.02);
+.landing-page .file-dropzone.drag-active {
+  border-color: var(--landing-gold);
+  background: rgba(184, 151, 77, 0.08);
+  transform: none;
 }
 
-.file-dropzone.has-file {
-  border-color: #10b981;
+.landing-page .file-dropzone.has-file {
+  border-color: var(--landing-gold);
   border-style: solid;
+  background: #fffef9;
 }
 
 .dropzone-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-}
-
-.dropzone-icon {
-  font-size: 2rem;
+  gap: 0.625rem;
 }
 
 .dropzone-title {
-  color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  max-width: 18rem;
+  line-height: 1.4;
 }
 
 .dropzone-link {
-  color: var(--accent);
+  color: var(--landing-gold);
   text-decoration: underline;
 }
 
 .dropzone-hint {
-  color: var(--text-secondary);
-  font-size: 0.7rem;
+  color: var(--landing-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.dropzone-selected .selected-icon {
+  font-size: 1.5rem;
 }
 
 .dropzone-selected {
@@ -190,8 +202,69 @@
   gap: 0.75rem;
 }
 
-.selected-icon {
-  font-size: 1.5rem;
+.dropzone-selected .selected-remove {
+  background: var(--landing-cream);
+  border: 1px solid #e8e4dc;
+}
+
+.dropzone-selected .selected-remove:hover {
+  background: #f3e9e9;
+}
+
+.landing-btn-continue {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--landing-gold);
+  color: #ffffff;
+}
+
+.landing-btn-continue:hover:not(:disabled) {
+  background: var(--landing-gold-hover);
+}
+
+.landing-btn-continue:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.landing-btn-history {
+  padding: 0.7rem 1.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--landing-gold);
+  color: #ffffff;
+}
+
+.landing-btn-history:hover {
+  background: var(--landing-gold-hover);
+}
+
+.dropzone-error {
+  margin-top: 0.5rem;
+  color: #c53030;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.selected-name {
+  font-weight: 500;
+}
+
+/* Иконки и выбранный файл */
+.dropzone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropzone-upload-graphic {
+  display: block;
+  width: 48px;
+  height: auto;
+  max-height: 56px;
+  object-fit: contain;
 }
 
 .selected-info {
@@ -199,123 +272,20 @@
   text-align: left;
 }
 
-.selected-name {
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-weight: 500;
-  word-break: break-all;
-}
-
 .selected-size {
-  color: var(--text-secondary);
+  color: var(--landing-muted);
   font-size: 0.7rem;
 }
 
-.selected-remove {
-  background: var(--bg-secondary);
-  border: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.selected-remove:hover {
-  background: #ef4444;
-  color: white;
-}
-
-.dropzone-error {
-  margin-top: 0.5rem;
-  color: #ef4444;
-  font-size: 0.75rem;
-  text-align: center;
-}
-
-/* Кнопки действий */
-.action-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.process-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  color: white;
-  border: none;
-  border-radius: 0.75rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-}
-
-.process-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
-.process-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.history-button {
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  border-radius: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.history-button:hover {
-  background: var(--bg-secondary);
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-  .landing-main {
-    padding: 1rem;
+/* Адаптив */
+@media (max-width: 720px) {
+  .landing-hero-inner {
+    justify-content: center;
+    align-items: flex-end;
   }
-  
-  .card-title {
-    font-size: 1.25rem;
-  }
-  
-  .landing-card {
-    padding: 1.5rem;
-  }
-  
-  .examples-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .example-block {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .action-buttons {
-    flex-direction: column;
-  }
-  
-  .process-button,
-  .history-button {
+
+  .landing-hero-card {
+    max-width: none;
     width: 100%;
   }
 }

@@ -1,63 +1,52 @@
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.header-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.25rem 0;
+  border: none;
+  background: transparent;
   cursor: pointer;
+  font: inherit;
+  color: inherit;
   transition: opacity 0.2s ease;
-  white-space: nowrap;
 }
 
-.logo:hover {
-  opacity: 0.8;
-}
-
-.header-title {
-  flex: 1;
-  text-align: center;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding: 0 1rem;
-}
-
-/* Адаптивность для шапки */
-@media (max-width: 768px) {
-  .header-title {
-    font-size: 0.7rem;
-    white-space: normal;
-    text-align: center;
-    line-height: 1.3;
-  }
-  
-  .logo {
-    font-size: 1rem;
-  }
-}
-
-.theme-toggle {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 2rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  color: var(--text-primary);
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.theme-toggle:hover {
+.header-brand:hover {
   opacity: 0.85;
-  transform: scale(1.02);
 }
 
-.theme-toggle span {
-  margin-left: 0.5rem;
+.header-brand:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.25);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+.header-brand-title {
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  white-space: nowrap;
+}
+
+.header-brand-logo {
+  display: block;
+  height: 2rem;
+  width: auto;
+  max-width: 9rem;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .header-brand-logo {
+    height: 1.5rem;
+    max-width: 6.5rem;
+  }
+
+  .header-brand {
+    gap: 0.5rem;
+  }
 }
 
 /* Корневой контейнер приложения */
@@ -72,9 +61,10 @@
 /* Шапка приложения */
 .app-header {
   padding: 1rem;
-  border-bottom: 1px solid var(--border);
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
