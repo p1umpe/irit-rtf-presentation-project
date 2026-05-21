@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FileDropzone } from '../components/ui/FileDropzone';
-import heroBg from '../images/urfu-building.png';
-import exampleCompare from '../images/pres-examle.png';
-import processingImage from '../images/proccesing.png';
-import cancelledImage from '../images/proccecing-end.png';
-import errorImage from '../images/error.png';
-import successImage from '../images/success.png';
-import downloadIcon from '../images/download.png';
+import { useThemeAssets } from '../hooks/useThemeAssets';
 import '../styles/landing.css';
 
 export const LandingPage = () => {
+  const {
+    heroBg,
+    exampleCompare,
+    processingImage,
+    cancelledImage,
+    errorImage,
+    successImage,
+    shareImage,
+    downloadIcon,
+  } = useThemeAssets();
   const [selectedFile, setSelectedFile] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
@@ -222,6 +226,7 @@ export const LandingPage = () => {
               </div>
             ) : (
               <FileDropzone
+                uploadIcon={shareImage}
                 onFileSelect={handleFileSelect}
                 onFileError={() => {
                   setIsError(true);

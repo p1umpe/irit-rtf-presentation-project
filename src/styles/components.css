@@ -17,7 +17,7 @@
 }
 
 .header-brand:focus-visible {
-  outline: 2px solid rgba(0, 0, 0, 0.25);
+  outline: 2px solid var(--accent);
   outline-offset: 4px;
   border-radius: 6px;
 }
@@ -26,7 +26,7 @@
   font-family: 'Poppins', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #000000;
+  color: var(--header-text);
   white-space: nowrap;
 }
 
@@ -58,14 +58,36 @@
   flex-direction: column;
 }
 
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid var(--theme-toggle-border);
+  border-radius: 8px;
+  background: var(--theme-toggle-bg);
+  color: var(--theme-toggle-text);
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
 /* Шапка приложения */
 .app-header {
   padding: 1rem;
-  background: #ffffff;
-  border-bottom: 1px solid #e5e7eb;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  gap: 1rem;
 }
 
 .app-header h1 {
@@ -82,8 +104,9 @@
 .app-footer {
   text-align: center;
   padding: 1.5rem;
-  border-top: 1px solid var(--border);
-  color: var(--text-secondary);
+  background: var(--footer-bg);
+  border-top: 1px solid var(--header-border);
+  color: var(--footer-text);
   font-size: 0.75rem;
   margin-top: auto;
 }

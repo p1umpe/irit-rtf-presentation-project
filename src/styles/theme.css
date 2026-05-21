@@ -1,4 +1,4 @@
-/* Светлая тема (по умолчанию) */
+/* Светлая тема */
 :root {
   --bg-primary: #ffffff;
   --bg-secondary: #f3f4f6;
@@ -9,17 +9,81 @@
   --accent-hover: #2563eb;
   --card-bg: #ffffff;
   --shadow: rgba(0, 0, 0, 0.1);
+
+  --header-bg: #ffffff;
+  --header-text: #000000;
+  --header-border: #e5e7eb;
+  --footer-bg: #ffffff;
+  --footer-text: #4b5563;
+
+  --landing-page-bg: #fdfbf4;
+  --landing-gold: #b8974d;
+  --landing-gold-hover: #a0803d;
+  --landing-hero-card-bg: rgba(248, 244, 236, 0.96);
+  --landing-hero-heading: #b8974d;
+  --landing-muted: #5c5448;
+  --landing-card-bg: #ffffff;
+  --landing-card-border: rgba(184, 151, 77, 0.12);
+  --landing-heading: #000000;
+  --landing-dropzone-bg: #fafafa;
+  --landing-dropzone-border: #cfd0c8;
+  --landing-dropzone-hover-bg: #fffdf8;
+  --landing-dropzone-text: #1a1a1a;
+  --landing-status-border: #ebebeb;
+  --landing-status-text: #666666;
+  --landing-progress-track: #d0d0d0;
+  --landing-progress-fill: #b8974d;
+  --landing-progress-cancelled: #8e0d0d;
+  --landing-error-hint: #b0b0b0;
+  --landing-error-hint-border: #efefef;
+  --landing-history-empty: #777777;
+  --landing-history-item-text: #1a1a1a;
+  --theme-toggle-bg: #f3f4f6;
+  --theme-toggle-border: #e5e7eb;
+  --theme-toggle-text: #111827;
 }
 
-/* Темная тема */
-[data-theme="dark"] {
-  --bg-primary: #111827;
-  --bg-secondary: #1f2937;
-  --text-primary: #f9fafb;
-  --text-secondary: #9ca3af;
-  --border: #374151;
-  --accent: #60a5fa;
-  --accent-hover: #3b82f6;
-  --card-bg: #1f2937;
-  --shadow: rgba(0, 0, 0, 0.3);
+/* Тёмная тема (по макету) */
+[data-theme='dark'] {
+  --bg-primary: #2c313c;
+  --bg-secondary: #4a5a7a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border: #556688;
+  --accent: #556688;
+  --accent-hover: #4a5a7a;
+  --card-bg: #5d707f;
+  --shadow: rgba(0, 0, 0, 0.35);
+
+  --header-bg: #4a5a7a;
+  --header-text: #ffffff;
+  --header-border: #556688;
+  --footer-bg: #4a5a7a;
+  --footer-text: #cccccc;
+
+  --landing-page-bg: #2c313c;
+  --landing-gold: #556688;
+  --landing-gold-hover: #4a5a7a;
+  --landing-hero-card-bg: rgba(33, 37, 43, 0.8);
+  --landing-hero-heading: #ffffff;
+  --landing-muted: #cccccc;
+  --landing-card-bg: #5d707f;
+  --landing-card-border: #556688;
+  --landing-heading: #ffffff;
+  --landing-dropzone-bg: #4a5a7a;
+  --landing-dropzone-border: #6b7f94;
+  --landing-dropzone-hover-bg: #556688;
+  --landing-dropzone-text: #ffffff;
+  --landing-status-border: #6b7f94;
+  --landing-status-text: #cccccc;
+  --landing-progress-track: #4a5a7a;
+  --landing-progress-fill: #556688;
+  --landing-progress-cancelled: #c53030;
+  --landing-error-hint: #cccccc;
+  --landing-error-hint-border: #6b7f94;
+  --landing-history-empty: #cccccc;
+  --landing-history-item-text: #ffffff;
+  --theme-toggle-bg: #556688;
+  --theme-toggle-border: #6b7f94;
+  --theme-toggle-text: #ffffff;
 }

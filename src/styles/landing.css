@@ -1,13 +1,8 @@
-/* Лендинг: кремовый фон и золотой акцент */
+/* Лендинг */
 .landing-page {
-  --landing-cream: #fdfbf4;
-  --landing-gold: #b8974d;
-  --landing-gold-hover: #a0803d;
-  --landing-hero-card-bg: rgba(248, 244, 236, 0.96);
-  --landing-muted: #5c5448;
-
   font-family: 'Poppins', system-ui, sans-serif;
-  background: var(--landing-cream);
+  background: var(--landing-page-bg);
+  color: var(--text-primary);
   min-height: 100%;
 }
 
@@ -44,7 +39,7 @@
   font-size: clamp(0.95rem, 2vw, 1.05rem);
   font-weight: 600;
   line-height: 1.35;
-  color: var(--landing-gold);
+  color: var(--landing-hero-heading);
 }
 
 .landing-hero-tagline {
@@ -93,7 +88,7 @@
   max-width: 40rem;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--landing-muted);
+  color: var(--text-primary);
 }
 
 .landing-examples-image {
@@ -116,11 +111,11 @@
 
 .landing-upload-card {
   width: min(920px, 100%);
-  background: #ffffff;
+  background: var(--landing-card-bg);
   border-radius: 12px;
   padding: clamp(1.5rem, 4vw, 2rem);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(184, 151, 77, 0.12);
+  box-shadow: 0 10px 40px var(--shadow);
+  border: 1px solid var(--landing-card-border);
 }
 
 .landing-upload-heading {
@@ -129,7 +124,7 @@
   text-align: center;
   font-size: 1rem;
   font-weight: 600;
-  color: #000000;
+  color: var(--landing-heading);
 }
 
 .landing-dropzone-block {
@@ -141,30 +136,30 @@
 }
 
 .landing-page .file-dropzone {
-  border: 2px dashed #cfd0c8;
+  border: 2px dashed var(--landing-dropzone-border);
   border-radius: 10px;
   padding: clamp(2rem, 5vw, 2.75rem) 1.25rem;
   text-align: center;
   cursor: pointer;
   transition: border-color 0.2s ease, background 0.2s ease;
-  background: #fafafa;
+  background: var(--landing-dropzone-bg);
 }
 
 .landing-page .file-dropzone:hover {
   border-color: var(--landing-gold);
-  background: #fffdf8;
+  background: var(--landing-dropzone-hover-bg);
 }
 
 .landing-page .file-dropzone.drag-active {
   border-color: var(--landing-gold);
-  background: rgba(184, 151, 77, 0.08);
+  background: var(--landing-dropzone-hover-bg);
   transform: none;
 }
 
 .landing-page .file-dropzone.has-file {
   border-color: var(--landing-gold);
   border-style: solid;
-  background: #fffef9;
+  background: var(--landing-dropzone-hover-bg);
 }
 
 .dropzone-content {
@@ -177,7 +172,7 @@
 .dropzone-title {
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #1a1a1a;
+  color: var(--landing-dropzone-text);
   max-width: 18rem;
   line-height: 1.4;
 }
@@ -204,12 +199,13 @@
 }
 
 .dropzone-selected .selected-remove {
-  background: var(--landing-cream);
-  border: 1px solid #e8e4dc;
+  background: var(--landing-dropzone-bg);
+  border: 1px solid var(--landing-dropzone-border);
+  color: var(--text-primary);
 }
 
 .dropzone-selected .selected-remove:hover {
-  background: #f3e9e9;
+  background: var(--landing-dropzone-hover-bg);
 }
 
 .landing-btn-continue {
@@ -246,11 +242,11 @@
   text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #000000;
+  color: var(--landing-heading);
 }
 
 .upload-processing-status {
-  border: 1px dashed #ebebeb;
+  border: 1px dashed var(--landing-status-border);
   border-radius: 4px;
   min-height: 160px;
   display: flex;
@@ -271,34 +267,44 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 500;
-  color: #666666;
+  color: var(--landing-status-text);
   text-align: center;
 }
 
 .upload-error-hint {
   margin: 1rem 0 1.2rem;
-  border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid var(--landing-error-hint-border);
   padding-bottom: 1rem;
   text-align: left;
   font-size: 0.95rem;
-  color: #b0b0b0;
+  color: var(--landing-error-hint);
 }
 
 .upload-processing-bar {
   width: 100%;
   height: 8px;
-  background: #d0d0d0;
+  background: var(--landing-progress-track);
   margin: 1.4rem 0 1.2rem;
 }
 
 .upload-processing-bar-fill {
   height: 100%;
-  background: #b8974d;
+  background: var(--landing-progress-fill);
   transition: width 0.3s ease;
 }
 
 .upload-processing-bar-fill.is-cancelled {
-  background: #8e0d0d;
+  background: var(--landing-progress-cancelled);
+}
+
+.upload-processing-cancel,
+.upload-processing-download,
+.upload-processing-back,
+.landing-btn-history,
+.history-item-btn,
+.history-hide-btn {
+  color: #ffffff;
+  background: var(--landing-gold);
 }
 
 .upload-processing-cancel {
@@ -309,12 +315,15 @@
   border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #ffffff;
-  background: #b8974d;
 }
 
-.upload-processing-cancel:hover {
-  background: #a9853f;
+.upload-processing-cancel:hover,
+.upload-processing-download:hover,
+.upload-processing-back:hover,
+.landing-btn-history:hover,
+.history-item-btn:hover,
+.history-hide-btn:hover {
+  background: var(--landing-gold-hover);
 }
 
 .upload-processing-download {
@@ -329,12 +338,6 @@
   border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 500;
-  color: #ffffff;
-  background: #b8974d;
-}
-
-.upload-processing-download:hover {
-  background: #a9853f;
 }
 
 .upload-processing-back {
@@ -345,12 +348,6 @@
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #ffffff;
-  background: #b8974d;
-}
-
-.upload-processing-back:hover {
-  background: #a9853f;
 }
 
 .upload-download-icon {
@@ -363,18 +360,12 @@
   padding: 0.7rem 1.75rem;
   font-size: 0.8125rem;
   font-weight: 600;
-  background: var(--landing-gold);
-  color: #ffffff;
-}
-
-.landing-btn-history:hover {
-  background: var(--landing-gold-hover);
 }
 
 .history-panel {
   width: min(920px, 100%);
-  background: #ffffff;
-  border: 1px solid rgba(184, 151, 77, 0.12);
+  background: var(--landing-card-bg);
+  border: 1px solid var(--landing-card-border);
   border-radius: 12px;
   padding: 1rem 1.2rem;
 }
@@ -384,13 +375,13 @@
   text-align: center;
   font-size: 1.1rem;
   font-weight: 600;
-  color: #000000;
+  color: var(--landing-heading);
 }
 
 .history-empty {
   margin: 1.2rem 0;
   text-align: center;
-  color: #777777;
+  color: var(--landing-history-empty);
   font-size: 0.95rem;
 }
 
@@ -427,14 +418,14 @@
 .history-item-name {
   margin: 0;
   font-size: 0.95rem;
-  color: #1a1a1a;
+  color: var(--landing-history-item-text);
   word-break: break-word;
 }
 
 .history-item-date {
   margin: 0.2rem 0 0.45rem;
   font-size: 0.9rem;
-  color: #1a1a1a;
+  color: var(--landing-history-item-text);
 }
 
 .history-item-actions {
@@ -445,13 +436,7 @@
 .history-item-btn {
   padding: 0.25rem 0.55rem;
   font-size: 0.76rem;
-  color: #ffffff;
-  background: #b8974d;
   border-radius: 4px;
-}
-
-.history-item-btn:hover {
-  background: #a9853f;
 }
 
 .history-hide-btn {
@@ -462,12 +447,6 @@
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: #ffffff;
-  background: #b8974d;
-}
-
-.history-hide-btn:hover {
-  background: #a9853f;
 }
 
 .dropzone-error {
@@ -479,6 +458,7 @@
 
 .selected-name {
   font-weight: 500;
+  color: var(--landing-dropzone-text);
 }
 
 /* Иконки и выбранный файл */

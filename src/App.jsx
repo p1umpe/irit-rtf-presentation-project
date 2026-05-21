@@ -1,9 +1,13 @@
 import React from 'react';
+import { ThemeProvider } from './contexts/ThemeContext';
+import { ThemeToggle } from './components/ui/ThemeToggle';
 import { LandingPage } from './pages/LandingPage';
-import urfuLogo from './images/urfu-logo.png';
+import { useThemeAssets } from './hooks/useThemeAssets';
 import './styles/global.css';
-    
-function App() {
+
+function AppContent() {
+  const { urfuLogo } = useThemeAssets();
+
   const handleLogoClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -20,6 +24,7 @@ function App() {
           <span className="header-brand-title">Презентации</span>
           <img src={urfuLogo} alt="" className="header-brand-logo" />
         </button>
+        <ThemeToggle />
       </header>
       <main className="app-main">
         <LandingPage />
@@ -28,6 +33,14 @@ function App() {
         <p>ИРИТ-РТФ • Кодовое Убежище • 2026</p>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

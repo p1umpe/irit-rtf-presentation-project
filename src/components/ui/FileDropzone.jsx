@@ -1,9 +1,10 @@
 import React, { useCallback, useId, useRef, useState } from 'react';
-import uploadGraphic from '../../images/share.png';
+import defaultUploadGraphic from '../../images/share.png';
 
 export const FileDropzone = ({
   onFileSelect,
   onFileError,
+  uploadIcon = defaultUploadGraphic,
   accept = '.pptx',
   maxSize = 50 * 1024 * 1024,
 }) => {
@@ -114,7 +115,7 @@ export const FileDropzone = ({
           <div className="dropzone-content">
             <div className="dropzone-icon">
               <img
-                src={uploadGraphic}
+                src={uploadIcon}
                 alt=""
                 className="dropzone-upload-graphic"
               />
