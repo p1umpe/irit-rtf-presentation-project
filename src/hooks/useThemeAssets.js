@@ -15,6 +15,7 @@ import successImageDark from '../images/success-dark.png';
 import shareImage from '../images/share.png';
 import shareImageDark from '../images/share-dark.png';
 import downloadIcon from '../images/download.png';
+import exampleCompareAfter from '../images/pres-examle-after.png';
 
 export const useThemeAssets = () => {
   const { theme } = useTheme();
@@ -24,6 +25,7 @@ export const useThemeAssets = () => {
     urfuLogo: isDark ? urfuLogoDark : urfuLogo,
     heroBg: isDark ? heroBgDark : heroBg,
     exampleCompare,
+    exampleCompareAfter,
     processingImage: isDark ? processingImageDark : processingImage,
     cancelledImage: isDark ? cancelledImageDark : cancelledImage,
     errorImage: isDark ? errorImageDark : errorImage,

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FileDropzone } from '../components/ui/FileDropzone';
+import { ImageCompareSlider } from '../components/ui/ImageCompareSlider';
 import { useThemeAssets } from '../hooks/useThemeAssets';
 import '../styles/landing.css';
 
@@ -7,6 +8,7 @@ export const LandingPage = () => {
   const {
     heroBg,
     exampleCompare,
+    exampleCompareAfter,
     processingImage,
     cancelledImage,
     errorImage,
@@ -14,6 +16,7 @@ export const LandingPage = () => {
     shareImage,
     downloadIcon,
   } = useThemeAssets();
+
   const [selectedFile, setSelectedFile] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
@@ -114,11 +117,11 @@ export const LandingPage = () => {
         <p id="landing-examples-heading" className="landing-examples-caption">
           Примеры работ нашего сервиса
         </p>
-        <img
-          src={exampleCompare}
-          alt="Сравнение слайда до и после стилизации"
-          className="landing-examples-image"
-          loading="lazy"
+        <ImageCompareSlider
+          beforeImage={exampleCompare}
+          afterImage={exampleCompareAfter}
+          beforeAlt="Слайд до обработки"
+          afterAlt="Слайд после обработки"
         />
       </section>
 

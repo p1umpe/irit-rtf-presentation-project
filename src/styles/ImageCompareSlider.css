@@ -1,0 +1,229 @@
+.image-compare-container {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+  
+  .image-compare-wrapper {
+    position: relative;
+    width: 100%;
+    cursor: ew-resize;
+    user-select: none;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: var(--landing-card-bg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-compare-after,
+  .image-compare-before {
+    width: 100%;
+    height: auto;
+    display: block;
+    pointer-events: none;
+    border-radius: 12px;
+  }
+  
+  .image-compare-before-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  .image-compare-before-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  /* Ползунок */
+  .image-compare-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  
+  .image-compare-slider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2px;
+    background: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .image-compare-slider-handle {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b8974d;
+    cursor: grab;
+    transition: transform 0.1s ease, box-shadow 0.2s ease;
+  }
+  
+  .image-compare-wrapper:active .image-compare-slider-handle {
+    cursor: grabbing;
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Подписи */
+  .image-compare-labels {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  
+  .image-compare-label {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: white;
+  }
+  
+  .before-label {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  
+  .after-label {
+    background: rgba(184, 151, 77, 0.9);
+    color: white;
+  }
+  
+  /* Инструкция */
+  .image-compare-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: var(--landing-muted);
+    text-align: center;
+  }
+  
+  .image-compare-instruction svg {
+    flex-shrink: 0;
+  }
+  
+  /* Адаптив */
+  @media (max-width: 768px) {
+    .image-compare-slider-handle {
+      width: 32px;
+      height: 32px;
+    }
+    
+    .image-compare-slider-handle svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    .image-compare-label {
+      padding: 3px 10px;
+      font-size: 0.7rem;
+    }
+    
+    .image-compare-labels {
+      top: 12px;
+      padding: 0 12px;
+    }
+  }
+
+
+/* Подписи - фиксированное позиционирование */
+.image-compare-labels {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Левая подпись (ДО) - всегда слева */
+.before-label {
+  position: absolute;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Правая подпись (ПОСЛЕ) - всегда справа */
+.after-label {
+  position: absolute;
+  right: 20px;
+  background: rgba(184, 151, 77, 0.95);
+  backdrop-filter: blur(4px);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Анимация появления */
+@keyframes labelFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Адаптив */
+@media (max-width: 640px) {
+  .before-label,
+  .after-label {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  
+  .before-label {
+    left: 12px;
+  }
+  
+  .after-label {
+    right: 12px;
+  }
+}
