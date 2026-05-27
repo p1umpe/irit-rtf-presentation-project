@@ -41,6 +41,11 @@
   --theme-toggle-bg: #f3f4f6;
   --theme-toggle-border: #e5e7eb;
   --theme-toggle-text: #111827;
+  --slider-before-bg: rgba(0, 0, 0, 0.75);
+  --slider-after-bg: rgba(184, 151, 77, 0.95);
+  --slider-handle-color: #b8974d;
+  --slider-handle-bg: #ffffff;
+  --slider-line-color: #ffffff;
 }
 
 /* Тёмная тема (по макету) */
@@ -86,4 +91,9 @@
   --theme-toggle-bg: #556688;
   --theme-toggle-border: #6b7f94;
   --theme-toggle-text: #ffffff;
+  --slider-before-bg: rgba(0, 0, 0, 0.8);
+  --slider-after-bg: rgba(85, 102, 136, 0.95);
+  --slider-handle-color: #6b7f94;
+  --slider-handle-bg: #e0e0e0;
+  --slider-line-color: #e0e0e0;
 }
