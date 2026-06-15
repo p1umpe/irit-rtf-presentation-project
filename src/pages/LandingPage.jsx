@@ -2,6 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FileDropzone } from '../components/ui/FileDropzone';
 import { ImageCompareSlider } from '../components/ui/ImageCompareSlider';
 import { useThemeAssets } from '../hooks/useThemeAssets';
+import {
+  uploadPresentation,
+  getPresentationStatus,
+  cancelPresentation,
+  downloadPresentation,
+  getPresentationHistory,
+} from '../api/presentations';
+import { USE_MOCK_API } from '../config/api';
 import '../styles/landing.css';
 
 export const LandingPage = () => {
@@ -25,42 +33,84 @@ export const LandingPage = () => {
   const [historyItems, setHistoryItems] = useState([]);
   const [isHistorySaved, setIsHistorySaved] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [jobId, setJobId] = useState(null);
   const uploadRef = useRef(null);
   const isCompleted = selectedFile && !isProcessing && progress >= 100;
 
-  const handleFileSelect = (file) => {
+  const resetUploadState = () => {
+    setIsProcessing(false);
+    setIsCancelled(false);
+    setIsError(false);
+    setProgress(0);
+    setSelectedFile(null);
+    setJobId(null);
+    setIsHistorySaved(false);
+  };
+
+  const handleFileSelect = async (file) => {
     setSelectedFile(file);
-    if (file) {
-      setProgress(0);
-      setIsCancelled(false);
-      setIsError(false);
-      setIsHistorySaved(false);
+    if (!file) {
+      resetUploadState();
+      return;
+    }
+
+    setProgress(0);
+    setIsCancelled(false);
+    setIsError(false);
+    setIsHistorySaved(false);
+
+    try {
+      const { jobId: newJobId } = await uploadPresentation(file);
+      setJobId(newJobId);
       setIsProcessing(true);
-    } else {
-      setIsProcessing(false);
-      setIsCancelled(false);
-      setIsError(false);
-      setProgress(0);
-      setIsHistorySaved(false);
+    } catch {
+      setIsError(true);
+      setSelectedFile(null);
     }
   };
 
   useEffect(() => {
     if (!isProcessing) return undefined;
 
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          setIsProcessing(false);
-          return 100;
-        }
-        return Math.min(prev + 10, 100);
-      });
-    }, 800);
+    if (USE_MOCK_API) {
+      const interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            clearInterval(interval);
+            setIsProcessing(false);
+            return 100;
+          }
+          return Math.min(prev + 10, 100);
+        });
+      }, 800);
 
+      return () => clearInterval(interval);
+    }
+
+    if (!jobId) return undefined;
+
+    const pollStatus = async () => {
+      try {
+        const data = await getPresentationStatus(jobId);
+        setProgress(data.progress ?? 0);
+
+        if (data.status === 'completed') {
+          setIsProcessing(false);
+          setProgress(100);
+        } else if (data.status === 'error') {
+          setIsProcessing(false);
+          setIsError(true);
+        }
+      } catch {
+        setIsProcessing(false);
+        setIsError(true);
+      }
+    };
+
+    pollStatus();
+    const interval = setInterval(pollStatus, 1000);
     return () => clearInterval(interval);
-  }, [isProcessing]);
+  }, [isProcessing, jobId]);
 
   useEffect(() => {
     if (!isCompleted || !selectedFile || isHistorySaved) return;
@@ -83,6 +133,44 @@ export const LandingPage = () => {
     setIsHistorySaved(true);
   }, [isCompleted, selectedFile, isHistorySaved]);
 
+  useEffect(() => {
+    if (!showHistory || USE_MOCK_API) return;
+
+    getPresentationHistory()
+      .then((items) => setHistoryItems(items))
+      .catch(() => setHistoryItems([]));
+  }, [showHistory]);
+
+  const handleCancelProcessing = async () => {
+    if (jobId && !USE_MOCK_API) {
+      try {
+        await cancelPresentation(jobId);
+      } catch {
+
+      }
+    }
+    setIsProcessing(false);
+    setIsCancelled(true);
+  };
+
+  const handleDownload = async () => {
+    if (USE_MOCK_API || !jobId) {
+      console.log('Скачать результат (mock)');
+      return;
+    }
+
+    try {
+      const blob = await downloadPresentation(jobId);
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = selectedFile?.name || 'presentation.pptx';
+      link.click();
+      URL.revokeObjectURL(url);
+    } catch {
+      setIsError(true);
+    }
+  };
   const scrollToUpload = () => {
     uploadRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
@@ -146,10 +234,7 @@ export const LandingPage = () => {
                   type="button"
                   className="landing-btn upload-processing-back"
                   onClick={() => {
-                    setIsError(false);
-                    setProgress(0);
-                    setSelectedFile(null);
-                    setIsHistorySaved(false);
+                    resetUploadState();
                   }}
                 >
                   Попробовать снова
@@ -172,10 +257,7 @@ export const LandingPage = () => {
                 <button
                   type="button"
                   className="landing-btn upload-processing-cancel"
-                  onClick={() => {
-                    setIsProcessing(false);
-                    setIsCancelled(true);
-                  }}
+                  onClick={handleCancelProcessing}
                 >
                   Отменить обработку
                 </button>
@@ -195,12 +277,7 @@ export const LandingPage = () => {
                 <button
                   type="button"
                   className="landing-btn upload-processing-back"
-                  onClick={() => {
-                    setIsCancelled(false);
-                    setProgress(0);
-                    setSelectedFile(null);
-                    setIsHistorySaved(false);
-                  }}
+                  onClick={resetUploadState}
                 >
                   Назад
                 </button>
@@ -221,7 +298,7 @@ export const LandingPage = () => {
                 <button
                   type="button"
                   className="landing-btn upload-processing-download"
-                  onClick={() => console.log('Скачать результат')}
+                  onClick={handleDownload}
                 >
                   Скачать
                   <img src={downloadIcon} alt="" className="upload-download-icon" />
